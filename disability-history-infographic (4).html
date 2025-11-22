@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institutionalization History Infographic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .infographic {
+            background: white;
+            max-width: 900px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.3em;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .intro-section {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .intro-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .intro-section p {
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.05em;
+        }
+        
+        .timeline {
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .timeline h2 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #667eea;
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            z-index: 1;
+        }
+        
+        .timeline-content h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .timeline-content p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .impact-section {
+            background: #fff3cd;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .impact-section h2 {
+            color: #856404;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .impact-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .impact-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .impact-card h3 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .impact-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .legacy-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .legacy-section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+        
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .legacy-card {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .legacy-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+        
+        .legacy-card p {
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .why-matters {
+            background: #f8f9ff;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #667eea;
+        }
+        
+        .why-matters h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .why-matters p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+        }
+        
+        .why-matters strong {
+            color: #667eea;
+        }
+        
+        .references {
+            background: #f0f0f0;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .references h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .references p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            padding-left: 20px;
+            text-indent: -20px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .timeline-container::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                margin-left: 60px !important;
+                margin-right: 0 !important;
+            }
+            
+            .timeline-year {
+                left: 30px;
+                transform: translateX(0);
+            }
+            
+            .impact-grid,
+            .legacy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <h1>From Institutions to Community</h1>
+            <p>The History of Institutionalization and Deinstitutionalization</p>
+        </div>
+        
+        <div class="content">
+            <div class="intro-section">
+                <h2>The Historical Issue</h2>
+                <p>For over a century, people with intellectual and developmental disabilities were systematically segregated from society and confined to large state institutions. These facilities, often called "schools" or "hospitals," promised care and education but delivered overcrowding, neglect, abuse, and inhumane conditions (Minnesota Governor's Council on Developmental Disabilities, n.d.). The institutional era represents one of the darkest chapters in disability history, affecting millions of individuals and their families. The exposure of these conditions in the 1960s and 1970s sparked a nationwide movement toward deinstitutionalization that fundamentally changed how we support people with disabilities today (New York Civil Liberties Union [NYCLU], 2024).</p>
+            </div>
+            
+            <div class="timeline">
+                <h2>Key Historical Moments</h2>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1800s-1900s</div>
+                        <div class="timeline-content">
+                            <h3>Rise of Institutions</h3>
+                            <p>Large state institutions were built across the United States, initially promising education and treatment for people with disabilities. However, these facilities quickly became overcrowded warehouses where people were segregated from society, stripped of dignity, and forgotten (Minnesota Governor's Council on Developmental Disabilities, n.d.).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">1947</div>
+                        <div class="timeline-content">
+                            <h3>Willowbrook State School Opens</h3>
+                            <p>Willowbrook State School opened in Staten Island, New York, designed to house 4,000 residents. Within years, it became severely overcrowded with over 6,000 people with developmental disabilities living in squalid, dangerous conditions with inadequate staff and resources (New York Civil Liberties Union [NYCLU], 2024).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">1972</div>
+                        <div class="timeline-content">
+                            <h3>Willowbrook Exposed</h3>
+                            <p>Journalist Geraldo Rivera broadcast footage from inside Willowbrook, showing people living in their own waste, naked and neglected, with rampant disease and abuse. The exposé shocked millions of Americans and galvanized public demand for change (Minnesota Governor's Council on Developmental Disabilities, n.d.).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">1975</div>
+                        <div class="timeline-content">
+                            <h3>Willowbrook Consent Decree</h3>
+                            <p>Parents filed a landmark class-action lawsuit resulting in the Willowbrook Consent Decree. The court ordered New York State to improve conditions and transition residents to community-based care, establishing standards for treatment and the right to live in the least restrictive environment (NYCLU, 2024).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">1987</div>
+                        <div class="timeline-content">
+                            <h3>Willowbrook Closes</h3>
+                            <p>Willowbrook State School officially closed after a 15-year effort to transition residents to community settings. The closure symbolized the national deinstitutionalization movement and became a cornerstone of the disability rights movement (Office for People With Developmental Disabilities [OPWDD], 2025).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="impact-section">
+                <h2>The Institutional Reality</h2>
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <div class="impact-icon">🏚️</div>
+                        <h3>Deplorable Conditions</h3>
+                        <p>Residents lived in overcrowded, filthy wards with minimal clothing, no privacy, and little access to the outdoors. Buildings were barren and unfurnished (Minnesota Governor's Council on Developmental Disabilities, n.d.).</p>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-icon">🦠</div>
+                        <h3>Rampant Disease</h3>
+                        <p>100% of patients at Willowbrook contracted Hepatitis within six months of admission. Parasites, pneumonia, and infectious diseases were widespread due to unsanitary conditions (Minnesota Governor's Council on Developmental Disabilities, n.d.).</p>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-icon">⚠️</div>
+                        <h3>Abuse and Neglect</h3>
+                        <p>People with disabilities were subjected to physical abuse, medical experimentation without consent, and systematic neglect. Many died preventable deaths (NYCLU, 2024).</p>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-icon">🚫</div>
+                        <h3>Segregation from Society</h3>
+                        <p>Individuals were isolated from their families and communities, denied education, employment, and basic human dignity. They were treated as less than human (OPWDD, 2025).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="legacy-section">
+                <h2>How This History Shaped Modern Services</h2>
+                <div class="legacy-grid">
+                    <div class="legacy-card">
+                        <h3>🏡 Community-Based Living</h3>
+                        <p>The deinstitutionalization movement established the principle that people with disabilities have the right to live in community settings, not isolated institutions (NYCLU, 2024).</p>
+                    </div>
+                    
+                    <div class="legacy-card">
+                        <h3>⚖️ Legal Protections</h3>
+                        <p>The Willowbrook case established legal standards for treatment, protection from abuse, and the right to live in the least restrictive environment possible (Office for People With Developmental Disabilities [OPWDD], 2025).</p>
+                    </div>
+                    
+                    <div class="legacy-card">
+                        <h3>✊ Self-Advocacy</h3>
+                        <p>The movement empowered people with disabilities and their families to advocate for their rights, leading to the broader disability rights movement (Minnesota Governor's Council on Developmental Disabilities, n.d.).</p>
+                    </div>
+                    
+                    <div class="legacy-card">
+                        <h3>🤝 Person-Centered Services</h3>
+                        <p>Modern services prioritize individual choice, dignity, community inclusion, and person-centered planning rather than custodial care (OPWDD, 2025).</p>
+                    </div>
+                    
+                    <div class="legacy-card">
+                        <h3>📚 Educational Rights</h3>
+                        <p>The movement contributed to establishing the right of children with disabilities to receive public education in inclusive settings (Minnesota Governor's Council on Developmental Disabilities, n.d.).</p>
+                    </div>
+                    
+                    <div class="legacy-card">
+                        <h3>🔍 Oversight and Accountability</h3>
+                        <p>Systems were established to monitor services, investigate abuse, and ensure quality care through state and federal oversight (NYCLU, 2024).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="why-matters">
+                <h2>Why This History Matters Today</h2>
+                <p><strong>Understanding this history is essential for providing quality services.</strong> The institutional era teaches us that segregating and devaluing people with disabilities leads to abuse, neglect, and violation of basic human rights. When people are congregated and isolated from society, they become invisible and vulnerable.</p>
+                
+                <p><strong>This history reminds us that community inclusion is a hard-won right, not a privilege.</strong> The brave advocacy of people with disabilities, their families, journalists, and attorneys forced systemic change. The services we provide today—community residences, supported employment, inclusive education—exist because people fought against institutionalization.</p>
+                
+                <p><strong>We must remain vigilant.</strong> While large institutions have closed, concerns about "reinstitutionalization" persist when people with disabilities are placed in large congregate settings, nursing homes, or isolated from community life. Quality services today must honor the lessons of history by prioritizing choice, dignity, community integration, and the voices of people with disabilities themselves (NYCLU, 2024).</p>
+                
+                <p><strong>Every person deserves to live, work, and thrive in their community.</strong> As service providers, we have a responsibility to remember this history and ensure that people with disabilities receive supports that promote independence, community participation, and full inclusion—never returning to the segregation and dehumanization of the institutional era (OPWDD, 2025).</p>
+            </div>
+            
+            <div class="references">
+                <h2>References</h2>
+                <p>Anthropic. (2024). <em>Claude</em> (Version 4) [Large language model]. Used for image generation. https://claude.ai</p>
+                <p>Minnesota Governor's Council on Developmental Disabilities. (n.d.). <em>Parallels in time: A history of developmental disabilities</em>. https://mn.gov/mnddc/parallels/</p>
+                <p>New York Civil Liberties Union. (2024, April 5). <em>50 years after a landmark lawsuit, how does NY treat people with developmental disabilities?</em> https://www.nyclu.org/commentary/50-years-after-landmark-lawsuit-how-does-ny-treat-people-developmental-disabilities</p>
+                <p>Office for People With Developmental Disabilities. (2025). <em>Governor Hochul commemorates the 50th anniversary of the Willowbrook Consent Decree and celebrates New York's path forward</em>. New York State. https://opwdd.ny.gov/news/governor-hochul-commemorates-50th-anniversary-willowbrook-consent-decree-and-celebrates-new</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
